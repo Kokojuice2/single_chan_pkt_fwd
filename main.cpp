@@ -520,8 +520,10 @@ void receivepacket() {
             ++buff_index;
             buff_up[buff_index] = 0; /* add string terminator, for safety */
 
-            printf("rxpk update: %s\n", (char *)(buff_up + 12)); /* DEBUG: display JSON payload */
-
+//            printf("rxpk update: %s\n", (char *)(buff_up + 12)); /* DEBUG: display JSON payload */
+            print(message, "\n");
+            print("\n");
+            
             //send the messages
             sendudp(buff_up, buff_index);
 
