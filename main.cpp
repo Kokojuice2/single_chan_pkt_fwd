@@ -314,6 +314,8 @@ void SetupLoRa()
 
 }
 
+/*      // out-commented for LoRa usage (receive data without internet)
+
 void sendudp(char *msg, int length) {
 
 //send the update
@@ -333,6 +335,8 @@ void sendudp(char *msg, int length) {
     }
 #endif
 }
+
+*/
 
 void sendstat() {
 
@@ -371,9 +375,9 @@ void sendstat() {
     status_report[stat_index] = 0; /* add string terminator, for safety */
 
     printf("stat update: %s\n", (char *)(status_report+12)); /* DEBUG: display JSON stat */
-
+    
     //send the update
-    sendudp(status_report, stat_index);
+//LoRa   sendudp(status_report, stat_index);
 
 }
 
@@ -521,11 +525,11 @@ void receivepacket() {
             buff_up[buff_index] = 0; /* add string terminator, for safety */
 
 //            printf("rxpk update: %s\n", (char *)(buff_up + 12)); /* DEBUG: display JSON payload */
-            print(message, "\n");
+            print(message, "\n");                                                                   // See full message from received packets
             print("\n");
             
             //send the messages
-            sendudp(buff_up, buff_index);
+//LoRa      sendudp(buff_up, buff_index);
 
             fflush(stdout);
 
